@@ -14615,7 +14615,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <h1 id="Part-1:-Run-one-of-the-part-of-speech-(POS)-taggers-available-in-Python.">Part 1: Run one of the part-of-speech (POS) taggers available in Python.<a class="anchor-link" href="#Part-1:-Run-one-of-the-part-of-speech-(POS)-taggers-available-in-Python.">&#182;</a></h1><blockquote><p>a. Find the longest sentence you can, longer than 10 words, that the POS tagger tags correctly. Show the input and output.</p>
 <p>b. Find the shortest sentence you can, shorter than 10 words, that the POS tagger fails to tag 100 percent correctly. Show the input and output. Explain your conjecture as to why the tagger might have been less than perfect with this sentence.</p>
 </blockquote>
-<p>The short setence that was used was "The robber eats, shoots and leaves." This is a  play on the commonly used setence "The pandas eats, shoots and leaves" which is used to describe the importance of oxford commas. Since shoots and leaves can be both nounds and verbs, the tagger has difficulty correclty tagging the sentence. It currently taggs <code>shoots</code> and <code>leaves</code> as plural nounds, but in the context of the sentence they should be verbs.</p>
+<p>The short sentence that was used was "The robber eats, shoots and leaves." This is a play on the commonly used sentence "The panda eats, shoots and leaves," which is used to describe the importance of Oxford commas. Since shoots and leaves can be both nouns and verbs, the tagger has difficulty correctly tagging the sentence. It currently tags <code>shoots</code> and <code>leaves</code> as plural nouns, but in the context of the sentence, they should be verbs.</p>
 
 </div>
 </div>
@@ -14793,10 +14793,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <hr>
 <h1 id="Part-2:-Run-a-different-POS-tagger-in-Python.">Part 2: Run a different POS tagger in Python.<a class="anchor-link" href="#Part-2:-Run-a-different-POS-tagger-in-Python.">&#182;</a></h1><h3 id="Process-the-same-two-sentences-from-question-1.">Process the same two sentences from question 1.<a class="anchor-link" href="#Process-the-same-two-sentences-from-question-1.">&#182;</a></h3><blockquote><p>a. Does it produce the same or different output?</p>
 </blockquote>
-<p>When running the tagger from the python package <code>SpaCy</code>, the long sentence is tagged the same way as <code>nltk</code> tagged it, however in the short setence the word <code>eats</code> is correctly tagged when using <code>SpaCy</code> but not when utilizing <code>nltk.</code></p>
+<p>When running the tagger from the Python package <code>SpaCy</code>, the long sentence is tagged the same way as <code>nltk</code> tagged it, however in the short sentence, the word <code>eats</code> is correctly tagged when using <code>SpaCy</code> but not when utilizing <code>nltk</code>.</p>
 <blockquote><p>b. Explain any differences as best you can.</p>
 </blockquote>
-<p>I'm not 100% sure why <code>nltk</code> would incorrectly tag the word <code>eats</code>, but due to the complexity of this setence it is expected to struggle to correctly tag <code>shoots</code> and <code>leaves</code>.</p>
+<p><code>nltk</code> incorrectly tagged the word <code>eats</code> as a plural nound and this could be due to assuming it was used in the same way as <code>food</code>, but due to the context of this sentence it is expected to struggle to correctly tag <code>shoots</code> and <code>leaves</code> as verbs.</p>
 
 </div>
 </div>
@@ -14920,7 +14920,7 @@ leaves       NOUN       NNS      noun, plural
 <url>https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html</url><p>b. Now run the same sentences through both taggers that you implemented for questions</p>
 <p>c. Explain any differences between the two taggers and your manual tagging as much as you can.</p>
 </blockquote>
-<p>The primary differnce between my own tagging usizing the Penn tag set, the nltk tagging and SpaCy tagging is found in the word <code>mainland</code>. In the context of the sentence <code>mainland</code> is an adjective that describes where in China. The <code>SpaCy</code> tagger flaggs <code>mainland</code> as a noun. While all other words are correctly tagged, this word can be both an adjective or noun and any tagger might struggle with this word.</p>
+<p>The primary difference between my own tagging utilizing the Penn tag set, the nltk tagging, and SpaCy tagging is found in the word <code>mainland</code>. In the context of the sentence, <code>mainland</code> is an adjective that describes a location in China. The <code>SpaCy</code> tagger flags <code>mainland</code> as a noun. While all other words are correctly tagged, this word can be both an adjective or noun, and any tagger might struggle with this word.</p>
 
 </div>
 </div>
