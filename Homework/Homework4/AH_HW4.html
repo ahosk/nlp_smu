@@ -14579,8 +14579,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Homework 4</p>
-
+<p>Allen Hoskins</p>
+<p>DS7337: Natural Language Processing, Fall 2022</p>
+<h1 id="Homework-4"><u>Homework 4</u><a class="anchor-link" href="#Homework-4">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14593,6 +14594,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">tag</span><span class="p">,</span><span class="n">word_tokenize</span><span class="p">,</span><span class="n">pos_tag</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">from</span> <span class="nn">spacy.tokenizer</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+<span class="n">sp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14608,13 +14612,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr>
-<h1 id="Part-1">Part 1<a class="anchor-link" href="#Part-1">&#182;</a></h1><ol>
-<li>Run one of the part-of-speech (POS) taggers available in Python. <blockquote><p>a. Find the longest sentence you can, longer than 10 words, that the POS tagger tags correctly. Show the input and output.</p>
+<h1 id="Part-1:-Run-one-of-the-part-of-speech-(POS)-taggers-available-in-Python.">Part 1: Run one of the part-of-speech (POS) taggers available in Python.<a class="anchor-link" href="#Part-1:-Run-one-of-the-part-of-speech-(POS)-taggers-available-in-Python.">&#182;</a></h1><blockquote><p>a. Find the longest sentence you can, longer than 10 words, that the POS tagger tags correctly. Show the input and output.</p>
+<p>b. Find the shortest sentence you can, shorter than 10 words, that the POS tagger fails to tag 100 percent correctly. Show the input and output. Explain your conjecture as to why the tagger might have been less than perfect with this sentence.</p>
 </blockquote>
-</li>
-</ol>
-<blockquote><p>b. Find the shortest sentence you can, shorter than 10 words, that the POS tagger fails to tag 100 percent correctly. Show the input and output. Explain your conjecture as to why the tagger might have been less than perfect with this sentence.</p>
-</blockquote>
+<p>The short setence that was used was "The robber eats, shoots and leaves." This is a  play on the commonly used setence "The pandas eats, shoots and leaves" which is used to describe the importance of oxford commas. Since shoots and leaves can be both nounds and verbs, the tagger has difficulty correclty tagging the sentence. It currently taggs <code>shoots</code> and <code>leaves</code> as plural nounds, but in the context of the sentence they should be verbs.</p>
 
 </div>
 </div>
@@ -14628,7 +14629,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">long_sentence</span> <span class="o">=</span> <span class="s1">&#39;Their plots were failing because of some important friends of the king.&#39;</span>
-<span class="n">short_setence</span> <span class="o">=</span> <span class="s1">&#39;The panda eats, shoots and leaves.&#39;</span>
 </pre></div>
 
      </div>
@@ -14645,6 +14645,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ls_tagged</span> <span class="o">=</span> <span class="n">pos_tag</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">long_sentence</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Long Sentence NLTK Tagging:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">ls_tagged</span>
 </pre></div>
 
@@ -14659,6 +14660,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Long Sentence NLTK Tagging:
+
+</pre>
+</div>
+</div>
 
 <div class="jp-OutputArea-child">
 
@@ -14690,6 +14704,22 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">short_setence</span> <span class="o">=</span> <span class="s1">&#39;The robber eats, shoots and leaves.&#39;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14699,6 +14729,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ss_tagged</span> <span class="o">=</span> <span class="n">pos_tag</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">short_setence</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Short Sentence NLTK Tagging:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">ss_tagged</span>
 </pre></div>
 
@@ -14717,6 +14748,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Short Sentence NLTK Tagging:
+
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
 
@@ -14724,7 +14768,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
 <pre>[(&#39;The&#39;, &#39;DT&#39;),
- (&#39;panda&#39;, &#39;NN&#39;),
+ (&#39;robber&#39;, &#39;NN&#39;),
  (&#39;eats&#39;, &#39;NNS&#39;),
  (&#39;,&#39;, &#39;,&#39;),
  (&#39;shoots&#39;, &#39;NNS&#39;),
@@ -14747,35 +14791,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr>
-<h1 id="Part-2">Part 2<a class="anchor-link" href="#Part-2">&#182;</a></h1><ol>
-<li>Run a different POS tagger in Python. Process the same two sentences from question 1.<blockquote><p>a. Does it produce the same or different output?</p>
+<h1 id="Part-2:-Run-a-different-POS-tagger-in-Python.">Part 2: Run a different POS tagger in Python.<a class="anchor-link" href="#Part-2:-Run-a-different-POS-tagger-in-Python.">&#182;</a></h1><h3 id="Process-the-same-two-sentences-from-question-1.">Process the same two sentences from question 1.<a class="anchor-link" href="#Process-the-same-two-sentences-from-question-1.">&#182;</a></h3><blockquote><p>a. Does it produce the same or different output?</p>
 </blockquote>
-</li>
-</ol>
+<p>When running the tagger from the python package <code>SpaCy</code>, the long sentence is tagged the same way as <code>nltk</code> tagged it, however in the short setence the word <code>eats</code> is correctly tagged when using <code>SpaCy</code> but not when utilizing <code>nltk.</code></p>
 <blockquote><p>b. Explain any differences as best you can.</p>
 </blockquote>
+<p>I'm not 100% sure why <code>nltk</code> would incorrectly tag the word <code>eats</code>, but due to the complexity of this setence it is expected to struggle to correctly tag <code>shoots</code> and <code>leaves</code>.</p>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">spacy</span>
-<span class="kn">from</span> <span class="nn">spacy.tokenizer</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
-<span class="n">sp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14785,6 +14810,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spacy_long</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="s1">&#39;Their plots were failing because of some important friends of the king.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Long Sentence SpaCy taggging:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">spacy_long</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">text</span><span class="si">:{</span><span class="mi">12</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">pos_</span><span class="si">:{</span><span class="mi">10</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="si">:{</span><span class="mi">8</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">spacy</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
@@ -14808,7 +14834,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Their        PRON       PRP$     pronoun, possessive
+<pre>Long Sentence SpaCy taggging:
+
+Their        PRON       PRP$     pronoun, possessive
 plots        NOUN       NNS      noun, plural
 were         AUX        VBD      verb, past tense
 failing      VERB       VBG      verb, gerund or present participle
@@ -14838,6 +14866,7 @@ king         NOUN       NN       noun, singular or mass
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">spacy_short</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="s1">&#39;The panda eats, shoots and leaves.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Short Sentence SpaCy taggging:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">spacy_short</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">text</span><span class="si">:{</span><span class="mi">12</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">pos_</span><span class="si">:{</span><span class="mi">10</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="si">:{</span><span class="mi">8</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">spacy</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
@@ -14861,7 +14890,9 @@ king         NOUN       NN       noun, singular or mass
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The          DET        DT       determiner
+<pre>Short Sentence SpaCy taggging:
+
+The          DET        DT       determiner
 panda        NOUN       NN       noun, singular or mass
 eats         VERB       VBZ      verb, 3rd person singular present
 ,            PUNCT      ,        punctuation mark, comma
@@ -14885,13 +14916,11 @@ leaves       NOUN       NNS      noun, plural
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr>
-<h1 id="Part-3">Part 3<a class="anchor-link" href="#Part-3">&#182;</a></h1><ol>
-<li>In a news article from this week’s news, find a random sentence of at least 10 words.<blockquote><p>a. Looking at the Penn tag set, manually POS tag the sentence yourself.</p>
+<h1 id="Part-3:-In-a-news-article-from-this-week%E2%80%99s-news,-find-a-random-sentence-of-at-least-10-words.">Part 3: In a news article from this week&#8217;s news, find a random sentence of at least 10 words.<a class="anchor-link" href="#Part-3:-In-a-news-article-from-this-week%E2%80%99s-news,-find-a-random-sentence-of-at-least-10-words.">&#182;</a></h1><blockquote><p>a. Looking at the Penn tag set, manually POS tag the sentence yourself.</p>
+<url>https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html</url><p>b. Now run the same sentences through both taggers that you implemented for questions</p>
+<p>c. Explain any differences between the two taggers and your manual tagging as much as you can.</p>
 </blockquote>
-</li>
-</ol>
-<blockquote><p>b. Now run the same sentences through both taggers that you implemented for questions</p>
-</blockquote>
+<p>The primary differnce between my own tagging usizing the Penn tag set, the nltk tagging and SpaCy tagging is found in the word <code>mainland</code>. In the context of the sentence <code>mainland</code> is an adjective that describes where in China. The <code>SpaCy</code> tagger flaggs <code>mainland</code> as a noun. While all other words are correctly tagged, this word can be both an adjective or noun and any tagger might struggle with this word.</p>
 
 </div>
 </div>
@@ -14904,7 +14933,7 @@ leaves       NOUN       NNS      noun, plural
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">news</span> <span class="o">=</span> <span class="s1">&#39;Days later, there are residents of island communities cut off from the mainland, hundreds of thousands of people without power, and Floridians who have found themselves homeless&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">news</span> <span class="o">=</span> <span class="s1">&#39;Google discontinued its Google Translate service in mainland China citing low usage.&#39;</span>
 </pre></div>
 
      </div>
@@ -14912,17 +14941,86 @@ leaves       NOUN       NNS      noun, plural
 </div>
 </div>
 
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="ADD-OWN-TAGGING-FROM:-https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">ADD OWN TAGGING FROM: <url>https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html</url><a class="anchor-link" href="#ADD-OWN-TAGGING-FROM:-https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">&#182;</a></h3>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">own_tag</span> <span class="o">=</span>   <span class="p">[(</span><span class="s2">&quot;Google&quot;</span><span class="p">,</span><span class="s1">&#39;NNP&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;discountinued&quot;</span><span class="p">,</span> <span class="s1">&#39;VBD&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;its&quot;</span><span class="p">,</span> <span class="s1">&#39;PRP$&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;Google&quot;</span><span class="p">,</span> <span class="s1">&#39;NNP&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;Translate&quot;</span><span class="p">,</span> <span class="s1">&#39;NNP&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;service&quot;</span><span class="p">,</span> <span class="s2">&quot;NN&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="s2">&quot;IN&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;mainland&quot;</span><span class="p">,</span> <span class="s2">&quot;JJ&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;China&quot;</span><span class="p">,</span> <span class="s2">&quot;NNP&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;citing&quot;</span><span class="p">,</span> <span class="s1">&#39;VBG&#39;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;low&quot;</span><span class="p">,</span><span class="s2">&quot;JJ&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;usage&quot;</span><span class="p">,</span> <span class="s2">&quot;NN&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="s2">&quot;SYM&quot;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Own tagging from Penn tag set: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">own_tag</span>
+</pre></div>
+
+     </div>
 </div>
 </div>
 </div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Own tagging from Penn tag set: 
+
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[(&#39;Google&#39;, &#39;NNP&#39;),
+ (&#39;discountinued&#39;, &#39;VBD&#39;),
+ (&#39;its&#39;, &#39;PRP$&#39;),
+ (&#39;Google&#39;, &#39;NNP&#39;),
+ (&#39;Translate&#39;, &#39;NNP&#39;),
+ (&#39;service&#39;, &#39;NN&#39;),
+ (&#39;in&#39;, &#39;IN&#39;),
+ (&#39;mainland&#39;, &#39;JJ&#39;),
+ (&#39;China&#39;, &#39;NNP&#39;),
+ (&#39;citing&#39;, &#39;VBG&#39;),
+ (&#39;low&#39;, &#39;JJ&#39;),
+ (&#39;usage&#39;, &#39;NN&#39;),
+ (&#39;.&#39;, &#39;SYM&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14932,6 +15030,7 @@ leaves       NOUN       NNS      noun, plural
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">news_tagged</span> <span class="o">=</span> <span class="n">pos_tag</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">news</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NLTK tagging: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">news_tagged</span>
 </pre></div>
 
@@ -14950,42 +15049,38 @@ leaves       NOUN       NNS      noun, plural
 <div class="jp-OutputArea-child">
 
     
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>NLTK tagging: 
+
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[(&#39;Days&#39;, &#39;NNS&#39;),
- (&#39;later&#39;, &#39;RB&#39;),
- (&#39;,&#39;, &#39;,&#39;),
- (&#39;there&#39;, &#39;EX&#39;),
- (&#39;are&#39;, &#39;VBP&#39;),
- (&#39;residents&#39;, &#39;NNS&#39;),
- (&#39;of&#39;, &#39;IN&#39;),
- (&#39;island&#39;, &#39;NN&#39;),
- (&#39;communities&#39;, &#39;NNS&#39;),
- (&#39;cut&#39;, &#39;VBD&#39;),
- (&#39;off&#39;, &#39;RP&#39;),
- (&#39;from&#39;, &#39;IN&#39;),
- (&#39;the&#39;, &#39;DT&#39;),
- (&#39;mainland&#39;, &#39;NN&#39;),
- (&#39;,&#39;, &#39;,&#39;),
- (&#39;hundreds&#39;, &#39;NNS&#39;),
- (&#39;of&#39;, &#39;IN&#39;),
- (&#39;thousands&#39;, &#39;NNS&#39;),
- (&#39;of&#39;, &#39;IN&#39;),
- (&#39;people&#39;, &#39;NNS&#39;),
- (&#39;without&#39;, &#39;IN&#39;),
- (&#39;power&#39;, &#39;NN&#39;),
- (&#39;,&#39;, &#39;,&#39;),
- (&#39;and&#39;, &#39;CC&#39;),
- (&#39;Floridians&#39;, &#39;NNPS&#39;),
- (&#39;who&#39;, &#39;WP&#39;),
- (&#39;have&#39;, &#39;VBP&#39;),
- (&#39;found&#39;, &#39;VBN&#39;),
- (&#39;themselves&#39;, &#39;PRP&#39;),
- (&#39;homeless&#39;, &#39;JJ&#39;)]</pre>
+<pre>[(&#39;Google&#39;, &#39;NNP&#39;),
+ (&#39;discontinued&#39;, &#39;VBD&#39;),
+ (&#39;its&#39;, &#39;PRP$&#39;),
+ (&#39;Google&#39;, &#39;NNP&#39;),
+ (&#39;Translate&#39;, &#39;NNP&#39;),
+ (&#39;service&#39;, &#39;NN&#39;),
+ (&#39;in&#39;, &#39;IN&#39;),
+ (&#39;mainland&#39;, &#39;JJ&#39;),
+ (&#39;China&#39;, &#39;NNP&#39;),
+ (&#39;citing&#39;, &#39;VBG&#39;),
+ (&#39;low&#39;, &#39;JJ&#39;),
+ (&#39;usage&#39;, &#39;NN&#39;),
+ (&#39;.&#39;, &#39;.&#39;)]</pre>
 </div>
 
 </div>
@@ -15002,7 +15097,8 @@ leaves       NOUN       NNS      noun, plural
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spacy_news</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="s1">&#39;Days later, there are residents of island communities cut off from the mainland, hundreds of thousands of people without power, and Floridians who have found themselves homeless&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spacy_news</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="s1">&#39;Google discontinued its Google Translate service in mainland China citing low usage.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SpaCy Tagging:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">spacy_news</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">text</span><span class="si">:{</span><span class="mi">12</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">pos_</span><span class="si">:{</span><span class="mi">10</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="si">:{</span><span class="mi">8</span><span class="si">}}</span><span class="s1"> </span><span class="si">{</span><span class="n">spacy</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">tag_</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
@@ -15026,36 +15122,21 @@ leaves       NOUN       NNS      noun, plural
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Days         NOUN       NNS      noun, plural
-later        ADV        RB       adverb
-,            PUNCT      ,        punctuation mark, comma
-there        PRON       EX       existential there
-are          VERB       VBP      verb, non-3rd person singular present
-residents    NOUN       NNS      noun, plural
-of           ADP        IN       conjunction, subordinating or preposition
-island       NOUN       NN       noun, singular or mass
-communities  NOUN       NNS      noun, plural
-cut          VERB       VBD      verb, past tense
-off          ADP        RP       adverb, particle
-from         ADP        IN       conjunction, subordinating or preposition
-the          DET        DT       determiner
+<pre>SpaCy Tagging:
+
+Google       PROPN      NNP      noun, proper singular
+discontinued VERB       VBD      verb, past tense
+its          PRON       PRP$     pronoun, possessive
+Google       PROPN      NNP      noun, proper singular
+Translate    PROPN      NNP      noun, proper singular
+service      NOUN       NN       noun, singular or mass
+in           ADP        IN       conjunction, subordinating or preposition
 mainland     NOUN       NN       noun, singular or mass
-,            PUNCT      ,        punctuation mark, comma
-hundreds     NOUN       NNS      noun, plural
-of           ADP        IN       conjunction, subordinating or preposition
-thousands    NOUN       NNS      noun, plural
-of           ADP        IN       conjunction, subordinating or preposition
-people       NOUN       NNS      noun, plural
-without      ADP        IN       conjunction, subordinating or preposition
-power        NOUN       NN       noun, singular or mass
-,            PUNCT      ,        punctuation mark, comma
-and          CCONJ      CC       conjunction, coordinating
-Floridians   PROPN      NNPS     noun, proper plural
-who          PRON       WP       wh-pronoun, personal
-have         AUX        VBP      verb, non-3rd person singular present
-found        VERB       VBN      verb, past participle
-themselves   PRON       PRP      pronoun, personal
-homeless     ADJ        JJ       adjective (English), other noun-modifier (Chinese)
+China        PROPN      NNP      noun, proper singular
+citing       VERB       VBG      verb, gerund or present participle
+low          ADJ        JJ       adjective (English), other noun-modifier (Chinese)
+usage        NOUN       NN       noun, singular or mass
+.            PUNCT      .        punctuation mark, sentence closer
 </pre>
 </div>
 </div>
